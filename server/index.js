@@ -2,7 +2,11 @@ const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
 const storage = require('./storage');
+
+const handleRequest = require('./handleRequest')
 const evolution = require('./evolution');
+const storePokemon = require('./storePokemon');
+const storeSpecies = require('./storeSpecies');
 
 const app = express();
 const port = 3150;
@@ -10,52 +14,30 @@ const port = 3150;
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 app.get('/api/pokemon', (req, res) => {
-  let pokemon = req.query.pokemon.toLowerCase();
+  const pokemon = req.query.pokemon.toLowerCase();
+  const pokeapi = 'https://pokeapi.co/api/v2/';
 
   // get data from /pokemon
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-  .then(request => {
-    if (request.ok) return request.json();
-    else res.send('ERROR: cannot search pokemon');
-  })
+  fetch(`${pokeapi}pokemon/${pokemon}`)
+  .then(request => handleRequest(res, request, 'pokemon'))
   .then(data => {
-    storage.id = data.id;
-    storage.name = data.name;
-    storage.abilities = data.abilities.map((e) => e.ability.name);
-    storage.moves = data.moves.map((e) => e.move.name);
-    storage.types = data.types.map((e) => e.type.name);
+    storePokemon(data);
 
     // get all posibile locations for the pokemon
     fetch(data.location_area_encounters)
-    .then(resLoc => {
-      if (resLoc.ok) return resLoc.json();
-      else res.send('ERROR: cannot search location');
-    })
+    .then(resLoc => handleRequest(res, resLoc, 'location'))
     .then(data => {
       storage.locations = data.map((e) => e.location_area.name);
       
       //get data from /pokemon-species
-      fetch(`https://pokeapi.co/api/v2/pokemon-species/${storage.id}`)
-      .then(resSpec => {
-        if (resSpec.ok) return resSpec.json();
-        else res.send('ERROR: cannot search species');
-      })
+      fetch(`${pokeapi}pokemon-species/${storage.id}`)
+      .then(resSpec => handleRequest(res, resSpec, 'species'))
       .then(data => {
-        storage.color = data.color.name;
-        storage.genders = data.gender_rate;
-
-        storage.varieties = data.varieties.map(e => {
-          const url = e.pokemon.url.split('/');
-          const urlId = url[url.length - 2];
-          if (urlId != storage.id) return {id: urlId, name: e.pokemon.name};
-        })
+        storeSpecies(data);
 
         // get evolution chain
         fetch(data.evolution_chain.url)
-        .then(resEvo => {
-          if (resEvo.ok) return resEvo.json();
-          else res.send('ERROR: cannot search evolution');
-        })
+        .then(resEvo => handleRequest(res, resEvo, 'evolution chain'))
         .then(data => {
           storage.evolution = evolution(data.chain);
           res.send(storage)
