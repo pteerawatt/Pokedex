@@ -1,6 +1,6 @@
 import React from 'react';
 import GenInfo from './GenInfo.jsx';
-import Evolution from './Evolution.jsx';
+import EvolutionNVariety from './EvolutionNVariety.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,22 +11,27 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.searchPokemon = this.searchPokemon.bind(this);
   }
 
-  handleSearch(e) {
-    e.preventDefault();
+  searchPokemon(nameOrId) {
     fetch('./api/pokemon', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({pokemon: this.state.search}),
+      body: JSON.stringify({pokemon: nameOrId}),
     })
     .then((res) => {
       return res.json();
     })
     .then(data => {
-      if (data.error) alert(data.error + ` name/id "${this.state.search}". \nTips: You can enter the Pokemon name or id.\nIf the Pokemon has many variants, please enter the name with the variant or the pokemon\'s id`);
+      if (data.error) alert(data.error + ` name/id "${nameOrId}". \nTips: You can enter the Pokemon name or id.\nIf the Pokemon has many variants, please enter the name with the variant or the pokemon\'s id`);
       else this.setState({ pokemon: data });
     })
+  }
+
+  handleSearch(e) {
+    e.preventDefault();
+    this.searchPokemon(this.state.search);
   };
 
   handleChange(e) {
@@ -43,7 +48,8 @@ class App extends React.Component {
             <button>Search</button>
           </form>
           {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
-          {this.state.pokemon.id ? <Evolution evolution={this.state.pokemon.evolution}/>: null}
+          {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
+          {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
         </div>
       </div>
     )
