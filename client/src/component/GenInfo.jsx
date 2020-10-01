@@ -5,18 +5,18 @@ const Geninfo = ({info}) => {
   // upper case first letter of every word in array. Returns array.
   const firstUpper = arr => arr.map(e => e[0].toUpperCase() + e.slice(1));
 
-  const parseName = firstUpper(info.name.split('-')).join(' ')
-  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${info.id}.png`
-
   const gender = (genders) => {
     if (genders === -1) return 'genderless';
     else if (genders === 0) return '100% male';
     else if (genders === 8) return '100% female';
     else return `${((8 - genders)/8)*100}% male, ${(genders/8)*100}% female`;
-  }
+  };
 
-  const types = info.types.join(', ')
-  const abilities = firstUpper(info.abilities).join( ', ')
+  const parseName = firstUpper(info.name.split('-')).join(' ');
+  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${info.id}.png`;
+  const types = info.types.join(', ');
+  const abilities = firstUpper(info.abilities).join( ', ');
+  const locations = info.locations.length !== 0 ? firstUpper(info.locations).join(', ') : 'Cannot be found in the wild';
 
   return (
     <div>
@@ -28,6 +28,7 @@ const Geninfo = ({info}) => {
         <div>{`Color: ${info.color}`}</div>
         <div>{`Types: ${types}`}</div>
         <div>{`Abilities: ${abilities}`}</div>
+        <div>{`Locations: ${locations}`}</div>
       </div>
     </div>
   )
