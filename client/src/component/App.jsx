@@ -1,4 +1,5 @@
 import React from 'react';
+import GenInfo from './GenInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
     })
     .then(data => {
       if (data.error) alert(data.error + ` name/id "${this.state.search}". \nTips: You can enter the Pokemon name or id.\nIf the Pokemon has many variants, please enter the name with the variant or the pokemon\'s id`);
-      else (console.log(data));
+      else this.setState({ pokemon: data });
     })
   };
 
@@ -34,11 +35,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>POKEDEX</div>
-        <form onSubmit={this.handleSearch}>
-          <input onChange={(e) => this.handleChange(e)}></input>
-          <button>Search</button>
-        </form>
+        <div>
+          <h1>POKEDEX</h1>
+          <form onSubmit={this.handleSearch}>
+            <input onChange={(e) => this.handleChange(e)}></input>
+            <button>Search</button>
+          </form>
+          {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
+        </div>
       </div>
     )
   };
