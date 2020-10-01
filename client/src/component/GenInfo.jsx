@@ -24,7 +24,7 @@ const Geninfo = ({info}) => {
       <img src={imageUrl} alt={`image of ${info.name}`}/>
       <div>
         <h3>Pokédex data</h3>
-        <div>{`Gender: ${gender(info.genders)}`}</div>
+        <div>{`Genders: ${gender(info.genders)}`}</div>
         <div>{`Color: ${info.color}`}</div>
         <div>{`Types: ${types}`}</div>
         <div>{`Abilities: ${abilities}`}</div>
