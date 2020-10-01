@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,12 +19,12 @@ class App extends React.Component {
       body: JSON.stringify({pokemon: this.state.search}),
     })
     .then((res) => {
-      // if (res.ok) return res.json();
-      // else alert('something went wrong')
-      return res.json()
+      return res.json();
     })
-    .then(data => console.log(data ? data : {}))
-    .catch(err => console.log(err))
+    .then(data => {
+      if (data.error) alert(data.error + ` name/id "${this.state.search}". \nTips: You can enter the Pokemon name or id.\nIf the Pokemon has many variants, please enter the name with the variant or the pokemon\'s id`);
+      else (console.log(data));
+    })
   };
 
   handleChange(e) {
