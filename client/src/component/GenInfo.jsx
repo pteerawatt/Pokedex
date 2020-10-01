@@ -15,8 +15,9 @@ const Geninfo = ({info}) => {
   const parseName = firstUpper(info.name.split('-')).join(' ');
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${info.id}.png`;
   const types = info.types.join(', ');
-  const abilities = firstUpper(info.abilities).join( ', ');
   const locations = info.locations.length !== 0 ? firstUpper(info.locations).join(', ') : 'Cannot be found in the wild';
+  const abilities = firstUpper(info.abilities).join( ', ');
+  const moves = firstUpper(info.moves).join(', ');
 
   return (
     <div>
@@ -27,8 +28,9 @@ const Geninfo = ({info}) => {
         <div>{`Genders: ${gender(info.genders)}`}</div>
         <div>{`Color: ${info.color}`}</div>
         <div>{`Types: ${types}`}</div>
-        <div>{`Abilities: ${abilities}`}</div>
         <div>{`Locations: ${locations}`}</div>
+        <div>{`Abilities: ${abilities}`}</div>
+        <div>{`Moves: ${moves}`}</div>
       </div>
     </div>
   )
