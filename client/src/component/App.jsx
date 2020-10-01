@@ -1,6 +1,7 @@
 import React from 'react';
 import GenInfo from './GenInfo.jsx';
 import EvolutionNVariety from './EvolutionNVariety.jsx';
+import History from './History.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -55,10 +56,13 @@ class App extends React.Component {
             <input onChange={e => this.handleChange(e)}></input>
             <button>Search</button>
           </form>
+        </div>
+        <div>
           {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
           {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
           {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
         </div>
+        <History searchPokemon={this.searchPokemon} history={this.state.history}/>
       </div>
     )
   };
