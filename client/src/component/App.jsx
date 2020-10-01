@@ -8,12 +8,14 @@ class App extends React.Component {
     this.state = {
       search: '',
       pokemon: {},
+      history: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.searchPokemon = this.searchPokemon.bind(this);
   }
 
+  // search for pokemon by id or name
   searchPokemon(nameOrId) {
     fetch('./api/pokemon', {
       method: 'POST',
@@ -25,15 +27,21 @@ class App extends React.Component {
     })
     .then(data => {
       if (data.error) alert(data.error + ` name/id "${nameOrId}". \nTips: You can enter the Pokemon name or id.\nIf the Pokemon has many variants, please enter the name with the variant or the pokemon\'s id`);
-      else this.setState({ pokemon: data });
+      else {
+        this.setState({ pokemon: data });
+        const newHist = [...this.state.history, data.name.split('-').map(e => e[0].toUpperCase() + e.slice(1)).join(' ')];
+        this.setState({ history: newHist });
+      }
     })
   }
 
+  // submit response to search pokemon
   handleSearch(e) {
     e.preventDefault();
     this.searchPokemon(this.state.search);
   };
 
+  // update search state to input value
   handleChange(e) {
     this.setState({search: e.target.value})
   };
