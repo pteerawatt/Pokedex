@@ -1,0 +1,26 @@
+.scrollbox-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.scrollheader {
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid black;
+  width: 215px;
+  height: 30px;
+}
+
+.scrollbox {
+  border: 1px solid black;
+  height: 250px;
+  width: 215px;
+  overflow: auto;
+}
+
+.scrollitem {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

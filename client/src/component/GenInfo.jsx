@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollBox from './ScrollBox.jsx';
 
 const Geninfo = ({info}) => {
   
@@ -15,9 +16,9 @@ const Geninfo = ({info}) => {
   const parseName = firstUpper(info.name.split('-')).join(' ');
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${info.id}.png`;
   const types = info.types.join(', ');
-  const locations = info.locations.length !== 0 ? firstUpper(info.locations).join(', ') : 'Cannot be found in the wild';
-  const abilities = firstUpper(info.abilities).join( ', ');
-  const moves = firstUpper(info.moves).join(', ');
+  const locations = firstUpper(info.locations);
+  const abilities = firstUpper(info.abilities);
+  const moves = firstUpper(info.moves);
 
   return (
     <div>
@@ -28,9 +29,11 @@ const Geninfo = ({info}) => {
         <div>{`Genders: ${gender(info.genders)}`}</div>
         <div>{`Color: ${info.color}`}</div>
         <div>{`Types: ${types}`}</div>
-        <div>{`Locations: ${locations}`}</div>
-        <div>{`Abilities: ${abilities}`}</div>
-        <div>{`Moves: ${moves}`}</div>
+        <div className="scrollbox-wrapper">
+          <ScrollBox name={'Abilities'} arr={abilities}/>
+          <ScrollBox name={'Moves'} arr={moves}/>
+          <ScrollBox name={'Locations'} arr={locations}/>
+        </div>
       </div>
     </div>
   )
