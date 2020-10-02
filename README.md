@@ -9,9 +9,9 @@ The following information will be displayed about the Pokémon:
 - The color of the Pokémon.
 - The evolution of the Pokémon.
 - The gender ratio of the Pokémon.
-- Location that the Pokémon can be found in the wild.
+- Locations that the Pokémon can be found in the wild.
 - All the moves that this Pokémon can learn.
-- All the types of this Pokémon.
+- All the types that Pokémon is.
 - All the varieties of this Pokémonp
 
 ## How to Get Started ##
@@ -31,7 +31,7 @@ Enter the name or id of the Pokémon to be searched and click the Search button.
 - Currently, a search consists of multiple API requests to https://pokeapi.co/ in a promise chain. The data is sent from the server-side to the client-side all in one bulk. This means that the client-side only renders after all of the requests have been completed, and components basically wait on each other to load. By dividing the component into microservices, components can load independently allowing users to view partial information instead of waiting for all the components to load at once. Microservice architecture can introduce another layer of complexity to the application and at this point, I believe it is not needed because the application is simple and fast enough.
 
 ## Currently known bugs ##
-- Searching a variant of a Pokemon currently does not work. This is because the name and id is can be inconsistent in the PokeAPI database. Adding code to perform additional search attempts (with the name instead of id or vise versa) after the initial search failed may solve this problem. 
+- Searching a variant of a Pokemon currently does not work. This is because the name and id can be inconsistent in the PokeAPI database. Adding code to perform additional search attempts (with the name instead of id or vise versa) after the initial search failed may solve this problem. 
 
 ## Technologies used ##
 - React
