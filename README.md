@@ -1,5 +1,5 @@
 # Pokédex
-Keeping track of your World of Warcraft mounts!
+Know the Pokémon!
 
 ## What is Pokédex? ##
 Pokédex allows the user to search for any Pokémon’s information by name or id. It’s like a dictionary for Pokémons!
