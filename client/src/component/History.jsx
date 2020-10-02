@@ -18,4 +18,4 @@ let History = ({ searchPokemon, history }) => {
   )
 }
 
-export default History;
+export default React.memo(History);

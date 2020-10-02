@@ -49,16 +49,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="app">
+        <div className="header">
           <h1>POKEDEX</h1>
           <form onSubmit={this.handleSearch}>
-            <input onChange={e => this.handleChange(e)}></input>
+            <input onChange={this.handleChange}></input>
             <button>Search</button>
           </form>
         </div>
         <div className="main-display-wrapper">
-          <div>
+          <div className="gen-info-wrapper">
             {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
             <div className="evo-var-wrapper">
               {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
@@ -72,4 +72,4 @@ class App extends React.Component {
   };
 };
 
-export default App;
+export default React.memo(App);

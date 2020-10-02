@@ -39,4 +39,4 @@ const Geninfo = ({info}) => {
   )
 };
 
-export default Geninfo;
+export default React.memo(Geninfo);

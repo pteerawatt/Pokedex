@@ -20,4 +20,4 @@ const ScrollBox = ({name, arr}) => {
   )
 }
 
-export default ScrollBox;
+export default React.memo(ScrollBox);

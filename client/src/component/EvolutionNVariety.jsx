@@ -27,4 +27,4 @@ let EvolutionNVariety = ({cat, data, searchPokemon}) => {
   )
 }
 
-export default EvolutionNVariety;
+export default React.memo(EvolutionNVariety);

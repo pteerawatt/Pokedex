@@ -42,7 +42,7 @@ app.post('/api/pokemon', (req, res) => {
           .then(resEvo => handleRequest(res, resEvo, 'evolution chain'))
           .then(data => {
             storage.evolution = evolution(data.chain);
-            res.send(storage)
+            res.send(storage);
           })
         } else res.send(storage);
       })
