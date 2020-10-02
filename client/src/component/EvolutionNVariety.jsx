@@ -1,7 +1,6 @@
 import React from 'react';
 
 let EvolutionNVariety = ({cat, data, searchPokemon}) => {
-  console.log(data)
   const parseName = name => name.split('-').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
 
   const handleClick = (e) => {

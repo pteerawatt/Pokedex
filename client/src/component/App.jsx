@@ -22,7 +22,7 @@ class App extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({pokemon: nameOrId}),
     })
-    .then((res) => {
+    .then(res => {
       return res.json();
     })
     .then(data => {
