@@ -42,31 +42,35 @@ input {
 }
 
 .main-display-wrapper {
-  /* width: 1000px; */
   display: flex;
   flex-direction: row;
 }
 
 .history-wrapper {
   margin-top: 240px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
 }
 
 .gen-info-wrapper {
   margin-top: 170px;
   margin-left: 40px;
-  width:700px
+  width: 700px;
+}
+
+.general-box-shadow {
+  border: 1.5px solid black;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
 }
 
 .secondary-headers {
-  border: 1.5px solid black;
-  border-radius: 4px;
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 4px;
   scroll-padding-top: 4px;
   width: fit-content;
   letter-spacing: 1px;
-  box-shadow: 4px 4px 5px slategrey;
 }
 
 .scrollbox-wrapper {
@@ -102,3 +106,11 @@ input {
   flex-direction: row;
 }
 
+.gen-col-typ-wrapper {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 14px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: fit-content;
+}

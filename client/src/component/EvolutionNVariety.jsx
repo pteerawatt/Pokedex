@@ -9,7 +9,7 @@ let EvolutionNVariety = ({cat, data, searchPokemon}) => {
   };
   
   return (
-    <div>
+    <div className="general-box-shadow">
       <div>{ cat + ': ' + (data.length <= 1 ? 'this Pokémon does not have any varients': '' )}</div>
       <div>
         {data.map(evo => {

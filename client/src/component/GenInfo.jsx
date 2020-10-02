@@ -22,13 +22,15 @@ const Geninfo = ({info}) => {
 
   return (
     <div>
-      <h2 className="secondary-headers">{parseName}</h2>
-      <img className="main-image" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
+      <h2 className="secondary-headers general-box-shadow">{parseName}</h2>
+      <img className="main-image general-box-shadow" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
       <div>
-        <h3 className="secondary-headers">Pokédex data</h3>
-        <div>{`Genders: ${gender(info.genders)}`}</div>
-        <div>{`Color: ${info.color}`}</div>
-        <div>{`Types: ${types}`}</div>
+        <h3 className="secondary-headers general-box-shadow">Pokédex data</h3>
+        <div className="gen-col-typ-wrapper general-box-shadow">
+          <div>{`Genders: ${gender(info.genders)}`}</div>
+          <div>{`Color: ${info.color}`}</div>
+          <div>{`Types: ${types}`}</div>
+        </div>
         <div className="scrollbox-wrapper">
           <ScrollBox name={'Abilities'} arr={abilities}/>
           <ScrollBox name={'Moves'} arr={moves}/>
