@@ -47,6 +47,7 @@ input {
 }
 
 .history-wrapper {
+  height: fit-content;
   margin-top: 240px;
   border-radius: 4px;
   box-shadow: 4px 4px 5px slategrey;
@@ -76,7 +77,9 @@ input {
 .scrollbox-wrapper {
   display: flex;
   flex-direction: row;
-  /* box-shadow: 10px 10px 10px 10px grey; */
+  width: fit-content;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
 }
 
 .scrollheader {
@@ -104,6 +107,16 @@ input {
 .evo-var-wrapper {
   display: flex;
   flex-direction: row;
+}
+
+.evo-var-box {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .gen-col-typ-wrapper {
