@@ -44,7 +44,10 @@ app.post('/api/pokemon', (req, res) => {
             storage.evolution = evolution(data.chain);
             res.send(storage);
           })
-        } else res.send(storage);
+        } else {
+          storage.evolution = [];
+          res.send(storage)
+        };
       })
     })
   })

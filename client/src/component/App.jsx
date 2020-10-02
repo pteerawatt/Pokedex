@@ -1,6 +1,5 @@
 import React from 'react';
 import GenInfo from './GenInfo.jsx';
-import EvolutionNVariety from './EvolutionNVariety.jsx';
 import History from './History.jsx';
 
 class App extends React.Component {
@@ -59,11 +58,7 @@ class App extends React.Component {
         </div>
         <div className="main-display-wrapper">
           <div className="gen-info-wrapper">
-            {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokémon with Pokémon's name or Id</div>}
-            <div className="evo-var-wrapper">
-              {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
-              {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
-            </div>
+            {this.state.pokemon.id ? <GenInfo info={this.state.pokemon} searchPokemon={this.searchPokemon}/> : <div>Search for a Pokémon with Pokémon's name or Id</div>}
           </div>
           <History searchPokemon={this.searchPokemon} history={this.state.history}/>
         </div>

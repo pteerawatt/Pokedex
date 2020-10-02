@@ -38,8 +38,9 @@ input {
 }
 
 .main-image {
-  height: 350px;
-  width: 350px;
+  height: 398px;
+  width: 398px;
+  margin-top: 21px;
 }
 
 .main-display-wrapper {
@@ -47,10 +48,15 @@ input {
   flex-direction: row;
 }
 
+.images-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .history-wrapper {
   background: white;
   height: fit-content;
-  margin-top: 240px;
+  margin-top: 265px;
   border-radius: 4px;
   box-shadow: 4px 4px 5px slategrey;
 }
@@ -58,7 +64,7 @@ input {
 .gen-info-wrapper {
   margin-top: 170px;
   margin-left: 40px;
-  width: 700px;
+  width: 720px;
 }
 
 .general-box-shadow {
@@ -84,6 +90,7 @@ input {
   width: fit-content;
   border-radius: 4px;
   box-shadow: 4px 4px 5px slategrey;
+  margin-bottom: 35px;
 }
 
 .scrollheader {
@@ -109,11 +116,14 @@ input {
 }
 
 .evo-var-wrapper {
+  padding-left: 20px;
+  margin-bottom: 35px;
   display: flex;
   flex-direction: row;
 }
 
 .evo-var-box {
+  max-width: 100px;
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
@@ -121,6 +131,10 @@ input {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 20px;
+}
+.scroll-evo-var {
+  overflow: auto;
+  max-height: 351px;
 }
 
 .gen-col-typ-wrapper {
@@ -130,4 +144,9 @@ input {
   padding-left: 30px;
   padding-right: 30px;
   width: fit-content;
+}
+
+.point-on-hover:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
