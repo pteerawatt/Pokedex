@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 const storage = require('./storage');
 
-const handleRequest = require('./handleRequest')
+const handleRequest = require('./handleRequest');
 const evolution = require('./evolution');
 const storePokemon = require('./storePokemon');
 const storeSpecies = require('./storeSpecies');
@@ -12,7 +12,7 @@ const storeSpecies = require('./storeSpecies');
 const app = express();
 const port = 3150;
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 app.post('/api/pokemon', (req, res) => {
@@ -52,6 +52,6 @@ app.post('/api/pokemon', (req, res) => {
     })
   })
   .catch(err => console.log(err));
-})
+});
 
 app.listen(port, () => console.log(`Pokedex on port: ${port}`));

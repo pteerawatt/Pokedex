@@ -8,5 +8,5 @@ module.exports = (data) => {
     const url = e.pokemon.url.split('/');
     const urlId = url[url.length - 2];
     if (urlId != storage.id) return {id: urlId, name: e.pokemon.name};
-  })
+  });
 };
