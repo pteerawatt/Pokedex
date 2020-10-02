@@ -4,6 +4,16 @@
   /* background-color: gray; */
 }
 
+.main-display-wrapper {
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+}
+
+.history-wrapper {
+
+}
+
 .scrollbox-wrapper {
   display: flex;
   flex-direction: row;
