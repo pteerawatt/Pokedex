@@ -1,0 +1,133 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Oxygen-Sans, Ubuntu, Cantarell, “Helvetica Neue”, sans-serif;
+  background-image: url("throw_bal.png");
+}
+
+input {
+  outline: none;
+}
+
+.header {
+  position: absolute;
+  margin-top: 0;
+  width: 100%;
+  background-color: #d32f2f;
+  padding-left: 50px;
+  padding-bottom: 35px;
+  padding-top: 15px;
+  color: #42a5f5;
+}
+
+.header-text {
+  margin-top: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+  text-shadow: 2px 1px 1px white;
+  font-size: 55px;
+}
+
+.search-wrapper {
+  margin-top: 200px;
+}
+
+.search-box {
+  box-shadow: 4px 4px 5px darkred;
+  width: fit-content;
+}
+
+.main-image {
+  height: 350px;
+  width: 350px;
+}
+
+.main-display-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.history-wrapper {
+  background: white;
+  height: fit-content;
+  margin-top: 240px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
+}
+
+.gen-info-wrapper {
+  margin-top: 170px;
+  margin-left: 40px;
+  width: 700px;
+}
+
+.general-box-shadow {
+  background: white;
+  border: 1.5px solid black;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
+}
+
+.secondary-headers {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 4px;
+  scroll-padding-top: 4px;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+.scrollbox-wrapper {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px slategrey;
+}
+
+.scrollheader {
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid black;
+  width: 215px;
+  height: 30px;
+}
+
+.scrollbox {
+  border: 1px solid black;
+  height: 250px;
+  width: 215px;
+  overflow: auto;
+}
+
+.scrollitem {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.evo-var-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.evo-var-box {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.gen-col-typ-wrapper {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 14px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: fit-content;
+}

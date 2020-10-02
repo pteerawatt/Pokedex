@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollBox from './ScrollBox.jsx';
 
 const Geninfo = ({info}) => {
   
@@ -15,25 +16,29 @@ const Geninfo = ({info}) => {
   const parseName = firstUpper(info.name.split('-')).join(' ');
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${info.id}.png`;
   const types = info.types.join(', ');
-  const locations = info.locations.length !== 0 ? firstUpper(info.locations).join(', ') : 'Cannot be found in the wild';
-  const abilities = firstUpper(info.abilities).join( ', ');
-  const moves = firstUpper(info.moves).join(', ');
+  const locations = firstUpper(info.locations);
+  const abilities = firstUpper(info.abilities);
+  const moves = firstUpper(info.moves);
 
   return (
     <div>
-      <h2>{parseName}</h2>
-      <img src={imageUrl} alt={`image of ${info.name}`}/>
+      <h2 className="secondary-headers general-box-shadow">{parseName}</h2>
+      <img className="main-image general-box-shadow" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
       <div>
-        <h3>Pokédex data</h3>
-        <div>{`Genders: ${gender(info.genders)}`}</div>
-        <div>{`Color: ${info.color}`}</div>
-        <div>{`Types: ${types}`}</div>
-        <div>{`Locations: ${locations}`}</div>
-        <div>{`Abilities: ${abilities}`}</div>
-        <div>{`Moves: ${moves}`}</div>
+        <h3 className="secondary-headers general-box-shadow">Pokédex data</h3>
+        <div className="gen-col-typ-wrapper general-box-shadow">
+          <div>{`Genders: ${gender(info.genders)}`}</div>
+          <div>{`Color: ${info.color}`}</div>
+          <div>{`Types: ${types}`}</div>
+        </div>
+        <div className="scrollbox-wrapper">
+          <ScrollBox name={'Abilities'} arr={abilities}/>
+          <ScrollBox name={'Moves'} arr={moves}/>
+          <ScrollBox name={'Locations'} arr={locations}/>
+        </div>
       </div>
     </div>
   )
 };
 
-export default Geninfo;
+export default React.memo(Geninfo);

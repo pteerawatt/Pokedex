@@ -49,23 +49,27 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>POKEDEX</h1>
-          <form onSubmit={this.handleSearch}>
-            <input onChange={e => this.handleChange(e)}></input>
+      <div className="app">
+        <div className="header">
+          <h1 className="header-text">Pokédex</h1>
+          <form className="search-box" onSubmit={this.handleSearch}>
+            <input onChange={this.handleChange}></input>
             <button>Search</button>
           </form>
         </div>
-        <div>
-          {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
-          {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
-          {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
+        <div className="main-display-wrapper">
+          <div className="gen-info-wrapper">
+            {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokémon with Pokémon's name or Id</div>}
+            <div className="evo-var-wrapper">
+              {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
+              {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
+            </div>
+          </div>
+          <History searchPokemon={this.searchPokemon} history={this.state.history}/>
         </div>
-        <History searchPokemon={this.searchPokemon} history={this.state.history}/>
       </div>
     )
   };
 };
 
-export default App;
+export default React.memo(App);
