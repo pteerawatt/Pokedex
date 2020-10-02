@@ -36,14 +36,15 @@ app.post('/api/pokemon', (req, res) => {
       .then(resSpec => handleRequest(res, resSpec, 'species'))
       .then(data => {
         storeSpecies(data);
-
-        // get evolution chain
-        fetch(data.evolution_chain.url)
-        .then(resEvo => handleRequest(res, resEvo, 'evolution chain'))
-        .then(data => {
-          storage.evolution = evolution(data.chain);
-          res.send(storage)
-        })
+        if (data.evolution_chain) {
+          // get evolution chain
+          fetch(data.evolution_chain.url)
+          .then(resEvo => handleRequest(res, resEvo, 'evolution chain'))
+          .then(data => {
+            storage.evolution = evolution(data.chain);
+            res.send(storage)
+          })
+        } else res.send(storage);
       })
     })
   })
