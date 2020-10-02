@@ -1,7 +1,7 @@
 import React from 'react';
 
 let EvolutionNVariety = ({cat, data, searchPokemon}) => {
-  console.log(cat, data, searchPokemon)
+  console.log(data)
   const parseName = name => name.split('-').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
 
   const handleClick = (e) => {
@@ -10,7 +10,7 @@ let EvolutionNVariety = ({cat, data, searchPokemon}) => {
   
   return (
     <div className="evo-var-box general-box-shadow">
-      <div>{ cat + ': ' + (data.length <= 1 ? 'this Pokémon does not have any varients': '' )}</div>
+      <div>{ cat + ': ' + (data.length <= 1 ? `this Pokémon does not have any ${cat}`: '' )}</div>
       <div className="scroll-evo-var">
         {data.map(evo => {
           return evo === null ? null : (
