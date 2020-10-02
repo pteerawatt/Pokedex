@@ -22,10 +22,10 @@ const Geninfo = ({info}) => {
 
   return (
     <div>
-      <h2>{parseName}</h2>
+      <h2 className="secondary-headers">{parseName}</h2>
       <img className="main-image" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
       <div>
-        <h3>Pokédex data</h3>
+        <h3 className="secondary-headers">Pokédex data</h3>
         <div>{`Genders: ${gender(info.genders)}`}</div>
         <div>{`Color: ${info.color}`}</div>
         <div>{`Types: ${types}`}</div>

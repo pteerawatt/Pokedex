@@ -51,15 +51,15 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="header">
-          <h1>POKEDEX</h1>
-          <form onSubmit={this.handleSearch}>
+          <h1 className="header-text">Pokédex</h1>
+          <form className="search-box" onSubmit={this.handleSearch}>
             <input onChange={this.handleChange}></input>
             <button>Search</button>
           </form>
         </div>
         <div className="main-display-wrapper">
           <div className="gen-info-wrapper">
-            {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokemon with Pokemon's name or Id</div>}
+            {this.state.pokemon.id ? <GenInfo info={this.state.pokemon}/> : <div>Search for a Pokémon with Pokémon's name or Id</div>}
             <div className="evo-var-wrapper">
               {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.evolution} searchPokemon={this.searchPokemon} cat={'Evolution'}/>: null}
               {this.state.pokemon.id ? <EvolutionNVariety data={this.state.pokemon.varieties} searchPokemon={this.searchPokemon} cat={'Varieties'}/>: null}
