@@ -1,7 +1,8 @@
 import React from 'react';
 import ScrollBox from './ScrollBox.jsx';
+import EvolutionNVariety from './EvolutionNVariety.jsx'
 
-const Geninfo = ({info}) => {
+const Geninfo = ({info, searchPokemon}) => {
   
   // upper case first letter of every word in array. Returns array.
   const firstUpper = arr => arr.map(e => e[0].toUpperCase() + e.slice(1));
@@ -23,7 +24,13 @@ const Geninfo = ({info}) => {
   return (
     <div>
       <h2 className="secondary-headers general-box-shadow">{parseName}</h2>
-      <img className="main-image general-box-shadow" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
+      <div className="images-wrapper">
+        <img className="main-image general-box-shadow" src={imageUrl} alt={`image of ${info.name}`} style={{backgroundColor: `${info.color}`}}/>
+        <div className="evo-var-wrapper">
+          <EvolutionNVariety data={info.evolution} searchPokemon={searchPokemon} cat={'Evolution'}/>
+          <EvolutionNVariety data={info.varieties} searchPokemon={searchPokemon} cat={'Varieties'}/>
+        </div>
+      </div>
       <div>
         <h3 className="secondary-headers general-box-shadow">Pokédex data</h3>
         <div className="gen-col-typ-wrapper general-box-shadow">

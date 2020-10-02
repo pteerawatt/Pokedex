@@ -8,7 +8,7 @@ let History = ({ searchPokemon, history }) => {
       <div className="scrollbox">
         {history.map((name, i)=> {
           return (
-            <div className="scrollitem" key={i} onClick={() => searchPokemon(name)}>
+            <div className="scrollitem point-on-hover" key={i} onClick={() => searchPokemon(name)}>
               {name}
             </div>
           );
